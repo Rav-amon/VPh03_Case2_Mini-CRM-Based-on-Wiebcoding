@@ -1,0 +1,32 @@
+services:
+  api:
+    build: .
+    image: mini-crm-api
+    container_name: mini-crm-api
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      PYTHONUNBUFFERED: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    working_dir: /app
+    command:
+      - watchmedo
+      - auto-restart
+      - --directory=/app
+      - --pattern=**/*.py
+      - --recursive
+      - --debug-force-polling
+      - --interval=1
+      - --debounce-interval=0.5
+      - --signal=SIGTERM
+      - --
+      - python
+      - -m
+      - uvicorn
+      - api:app
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "8000"

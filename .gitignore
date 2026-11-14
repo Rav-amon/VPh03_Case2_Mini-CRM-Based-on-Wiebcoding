@@ -1,0 +1,19 @@
+# Виртуальное окружение и кэш Python ставятся локально.
+.venv/
+__pycache__/
+*.pyc
+
+# Секреты: ключ сервисного аккаунта, OAuth-клиент, токен пользователя и .env.
+.env
+excel-factory-*.json
+client_secret_*.json
+google_oauth_token.json
+google_settings.txt
+
+# Локальный файл мини-CRM. Его создаёт CrmDatabase, в репозиторий он не входит.
+data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3
+*.db
